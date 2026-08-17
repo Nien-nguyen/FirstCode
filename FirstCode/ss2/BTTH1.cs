@@ -59,6 +59,11 @@ namespace FirstCode.ss2
             int c = Console.Read();
             Console.WriteLine($"ASCII code of {(char)c} is {c}");
 
+            //8. To calculate area of circle
+            Console.Write("Enter the radius of the circle: ");
+            float rad = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine($"The area of your circle is: {Math.PI * rad * rad}");
+
 
         }
     }
