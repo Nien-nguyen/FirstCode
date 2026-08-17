@@ -62,8 +62,20 @@ namespace FirstCode.ss2
             //8. To calculate area of circle
             Console.Write("Enter the radius of the circle: ");
             float rad = Convert.ToSingle(Console.ReadLine());
-            Console.WriteLine($"The area of your circle is: {Math.PI * rad * rad}");
+            Console.WriteLine($"The area of your circle is: {3.14f * rad * rad}");
 
+            //9. To calculate area of square
+            Console.Write("Give me the length of the square: ");
+            float len = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine($"The area of your square is: {len * len}");
+
+            //10. To convert days to years, weeks and days
+            Console.Write("Enter your days(>=365): ");
+            int day = Convert.ToInt32(Console.ReadLine());
+            int year = day / 365;
+            int week = (day - year * 365) / 7;
+            int dayleft = day - year * 365 - week * 7;
+            Console.WriteLine($"It is {year} years, {week} weeks and {dayleft} days");
 
         }
     }
