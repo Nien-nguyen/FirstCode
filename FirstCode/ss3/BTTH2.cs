@@ -6,7 +6,7 @@ namespace FirstCode.ss3
 {
     internal class BTTH_
     {
-        private static void Main(string[] args)
+        private static void Main4(string[] args)
         {
             //EXERCISE 1
             Console.Write("Chuyen doi do C sang do F vaf Kelvin: ");
@@ -27,20 +27,21 @@ namespace FirstCode.ss3
             Console.ReadKey();
 
             //EXERCISE 3
-            Console.WriteLine("Nhap so dau tien: ");
+            Console.Write("Nhap so dau tien: ");
             int a = int.Parse(Console.ReadLine());
             Console.Write("Nhap so thu hai: ");
             int b = int.Parse(Console.ReadLine());
             int add = a + b;
             int sub = a - b;
             int mul = a * b;
-            int div = a / b;
+            float div = (float)a/ (float)b;
             int mod = a % b;
             Console.WriteLine($"{a} + {b} = {add} \n " +
                 $"{a} - {b} = {sub} \n" +
                 $"{a} * {b} = {mul} \n" +
                 $"{a} / {b} = {div} \n" +
                 $"{a} mod {b} = {mod}"); 
+            Console.ReadKey();
         }
     }
 }
