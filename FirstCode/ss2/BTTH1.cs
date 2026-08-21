@@ -6,7 +6,7 @@ namespace FirstCode.ss2
 {
     internal class BTTH1
     {
-        private static void Main(string[] args)
+        private static void Main1(string[] args)
         {
             //1. To Add/ Sum two numbers
             Console.Write("Enter the first number: ");
