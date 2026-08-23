@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -12,19 +13,30 @@ namespace FirstCode.ss3
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("---INPUT---");
-            Console.Write("Nhập số điện cũ (kWh): ");
-            decimal csc = decimal.Parse(Console.ReadLine());
-            Console.Write("Nhập số điện mới (kWh): ");
-            decimal csm = decimal.Parse(Console.ReadLine());
+            decimal csm = 0, csc = 0;
+            //Console.Write("Nhập số điện cũ (kWh): ");
+            //decimal csc = decimal.Parse(Console.ReadLine());
+            //Console.Write("Nhập số điện mới (kWh): ");
+            //decimal csm = decimal.Parse(Console.ReadLine());
             
-            while (csm < csc)
+            while (true)
             {
-                Console.WriteLine("Chỉ số mới phải lớn hơn hoặc bằng chỉ số cũ.");
-                Console.Write("Nhập lại số điện mới (kWh): ");
-                csm = decimal.Parse(Console.ReadLine());
                 Console.Write("Nhập số điện cũ (kWh): ");
                 csc = decimal.Parse(Console.ReadLine());
+                Console.Write("Nhập số điện mới (kWh): ");
+                csm = decimal.Parse(Console.ReadLine());
+                if (csm >= csc)
+                { break; }
+                Console.WriteLine("Chỉ số mới phải lớn hơn hoặc bằng chỉ số cũ.");
             }
+            //while (csm < csc)
+            //{
+            //    Console.WriteLine("Chỉ số mới phải lớn hơn hoặc bằng chỉ số cũ.");
+            //    Console.Write("Nhập lại số điện mới (kWh): ");
+            //    csm = decimal.Parse(Console.ReadLine());
+            //    Console.Write("Nhập số điện cũ (kWh): ");
+            //    csc = decimal.Parse(Console.ReadLine());
+            //}
             decimal tieuthu = csm - csc;
             decimal total = 0;
             if (tieuthu <= 50)
@@ -90,8 +102,137 @@ namespace FirstCode.ss3
             Console.WriteLine($"Cân nặng lý tưởng của bạn nên từ {min_weight} kg đến {max_weight} kg.");
             Console.ReadKey();
         }
-     static void Main(string[] args) //Bai 3: Ứng dụng Quy đổi tiền tệ đa tỷ giá ngân hàng
+     static void Main3(string[] args) //Bai 3: Ứng dụng Quy đổi tiền tệ đa tỷ giá ngân hàng
         {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine("---INPUT---");
+            Console.Write("Nhập số tiền VND: ");
+            decimal vnd = decimal.Parse(Console.ReadLine());
+            Console.Write("Chọn ngoại tệ (1-USD, 2-EUR, 3-JPY, 4-GBP): ");
+            byte pick = byte.Parse(Console.ReadLine());
+            while (pick > 4)
+            {
+                Console.WriteLine("Chọn sai ngoại tệ, vui lòng chọn lại");
+                Console.Write("Chọn ngoại tệ: ");
+                pick = byte.Parse(Console.ReadLine());
+            }
+            decimal ser =(1m/200m) * vnd;
+            decimal vnd_doi = vnd - ser;
+            string dvi = "-";
+            decimal total = 0;
+            if (pick < 2)
+            {
+                total = vnd_doi / 25400;
+                dvi = "USD";
+            }
+            else if (pick < 3)
+            {
+                total = vnd_doi / 27200;
+                dvi = "EUR";
+            }
+            else if (pick < 4)
+            {
+                total = vnd_doi / 165;
+                dvi = "JPY";
+            }
+            else
+            {
+                total = vnd_doi / 32100;
+                dvi = "GBP";
+            }
+            Console.WriteLine("---OUTPUT---");
+            Console.WriteLine($"Phí dịch vụ (0.5%): {ser:#,##0} VND");
+            Console.WriteLine($"Số tiền VND tính đổi: {vnd_doi:#,##0} VND");
+            Console.WriteLine($"Số tiền {dvi} nhận được: {Math.Round(total, 2):#,##0} {dvi}");
+        }
+     static void Main4(string[] args) //Bai 4: Tính tuổi chính xác & Đếm ngược ngày sinh nhật
+
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine("---INPUT---");
+            DateTime bday;
+            while (true)
+            {
+                Console.Write("Nhập ngày sinh (dd/MM/yyyy): ");
+                string date = Console.ReadLine();
+                if (DateTime.TryParseExact(date,
+                                           "dd/MM/yyyy",
+                                           CultureInfo.InvariantCulture,
+                                           DateTimeStyles.None,
+                                           out bday))
+                {
+                    break;
+                }
+                Console.WriteLine("Định dạng ngày sinh không hợp lệ.");
+
+            }
+            DateTime now = DateTime.Now.Date;
+            int tuoi = now.Year - bday.Year;
+            
+            DateTime nextbday = new DateTime(now.Year, bday.Month, bday.Day);
+            if (nextbday < now)
+            {
+                nextbday = nextbday.AddYears(1);
+            }
+            TimeSpan so_ngay_da_song = (now - bday);
+            TimeSpan sinh_nhat_tiep_theo = nextbday - now;
+            
+            Console.WriteLine("\n---OUTPUT---");
+            Console.WriteLine($"Tuổi hiện tại: {tuoi} tuổi");
+            Console.WriteLine($"Bạn đã sống tổng cộng: {so_ngay_da_song.Days} ngày");
+            Console.WriteLine($"Sinh nhật tiếp theo: {sinh_nhat_tiep_theo.Days} ngày nữa");
+            Console.ReadLine();
+            
+        }
+     static void Main(string[] args) //Bai 5: Quản lý điểm học phần & Quy Đổi thang điểm GPA (4.0)
+        {
+            Console.OutputEncoding = (Encoding.UTF8);
+            Console.Write("C# (4 TC): ");
+            double c_sharp = double.Parse(Console.ReadLine());
+            Console.Write("Toán (3 TC): ");
+            double toan = double.Parse(Console.ReadLine());
+            Console.Write("Tiếng Anh (2 TC): ");
+            double anh = double.Parse(Console.ReadLine());
+            var tbts = (c_sharp * 4 + toan * 3 + anh * 2) / (4 + 3 + 2);
+            string gpa = "-";
+            string diem = "-";
+            string xep_loai = "-";
+            if (tbts >=8.5 && tbts<=10)
+            {
+                gpa = "4.0";
+                diem = "A";
+                xep_loai = "Xuất sắc/ Giỏi";
+            }
+            else if (tbts >= 7.0)
+            {
+                gpa = "3.0";
+                diem = "B";
+                xep_loai = "Khá";
+            }
+            else if (tbts >=5.5)
+            {
+                gpa = "2.0";
+                diem = "C";
+                xep_loai = "Trung bình";
+            }
+            else if (tbts >=4.0)
+            {
+                gpa = "1.0";
+                diem = "D";
+                xep_loai = "Yếu";
+            }
+            else
+            {
+                gpa = "0.0";
+                diem = "F";
+                xep_loai = " Kém (Trượt) ";
+            }
+            Console.WriteLine("\n---OUTPUT---");
+            Console.WriteLine($"Điểm TB Thang 10: {Math.Round(tbts,2)}");
+            Console.WriteLine($"Điểm Chữ quy đổi: {diem}");
+            Console.WriteLine($"Điểm GPA thang 4: {gpa}");
+            Console.WriteLine($"Xếp loại học lực: {xep_loai}");
+            Console.ReadKey();
 
         }
     }
