@@ -184,7 +184,7 @@ namespace FirstCode.ss3
             Console.ReadLine();
             
         }
-     static void Main(string[] args) //Bai 5: Quản lý điểm học phần & Quy Đổi thang điểm GPA (4.0)
+     static void Main5(string[] args) //Bai 5: Quản lý điểm học phần & Quy Đổi thang điểm GPA (4.0)
         {
             Console.OutputEncoding = (Encoding.UTF8);
             Console.Write("C# (4 TC): ");
@@ -233,6 +233,48 @@ namespace FirstCode.ss3
             Console.WriteLine($"Điểm GPA thang 4: {gpa}");
             Console.WriteLine($"Xếp loại học lực: {xep_loai}");
             Console.ReadKey();
+
+        }
+     static void Main(string[] args) //Bai 6: Chuẩn hóa họ tên người dùng & tự động tạo email/ username
+        {
+            Console.OutputEncoding = (Encoding.UTF8);
+            Console.InputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("---INPUT---");
+            string ten = "-";
+            while (true)
+            {
+                Console.Write("Nhập họ tên thô: ");
+                ten = Console.ReadLine();
+                if (ten == null)
+                {
+                    Console.WriteLine("Nhập lại tên thô");
+                }
+                else { break; }
+            }
+            ten = ten.Trim();
+            string[] parts = ten.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < parts.Length; i++)
+            {
+                string word = parts[i].ToLower();
+                parts[i] = char.ToUpper(word[0]) + word.Substring(1);
+
+            }
+            string tencuoi = string.Join(" ", parts);
+            Console.WriteLine("\n---OUTPUT---");
+            Console.WriteLine($"Họ tên chuẩn hóa: {tencuoi}");
+            parts = tencuoi.Split(' ');
+            List<string> ten_dem = new List<string>();
+            for (int i =1; i < parts.Length-1; i++)
+            {
+                ten_dem.Add(parts[i]) ;
+            }
+            string name = parts[parts.Length - 1];
+            string[] ten_dem_str = ten_dem.ToArray();
+
+            Console.WriteLine($"Họ: {parts[0]} \\ Tên đệm: {string.Join(" ",ten_dem_str)} \\ Tên: {name}");
+            string username = name.ToLower() +"."+ parts[0].ToLower() + string.Join("",ten_dem_str).ToLower();
+            Console.WriteLine($"Username tạo tự động: {username}");
+            Console.WriteLine($"Email cấp phát: {username}@company.edu.vn");
 
         }
     }
