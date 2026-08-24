@@ -9,7 +9,7 @@ namespace FirstCode.ss3
 {
     internal class EXERCISE__2
     {
-     static void Main1(string[] args)//Bai 1: Tính tiền điện sinh hoạt gia đình theo bảng giá bậc thang
+        static void Main1(string[] args)//Bai 1: Tính tiền điện sinh hoạt gia đình theo bảng giá bậc thang
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("---INPUT---");
@@ -18,7 +18,7 @@ namespace FirstCode.ss3
             //decimal csc = decimal.Parse(Console.ReadLine());
             //Console.Write("Nhập số điện mới (kWh): ");
             //decimal csm = decimal.Parse(Console.ReadLine());
-            
+
             while (true)
             {
                 Console.Write("Nhập số điện cũ (kWh): ");
@@ -47,13 +47,13 @@ namespace FirstCode.ss3
             {
                 total = 50 * 1806 + (tieuthu - 50) * 1866;
             }
-            else if ( (tieuthu <= 200))
+            else if ((tieuthu <= 200))
             {
-                total = 50 * 1806 + 50 * 1866 + (tieuthu - 100)*2167;
+                total = 50 * 1806 + 50 * 1866 + (tieuthu - 100) * 2167;
             }
-            else if (tieuthu <=300)
+            else if (tieuthu <= 300)
             {
-                total = 50 * 1806 + 50 * 1866 + 100 * 2167 + (tieuthu - 200)*2729;
+                total = 50 * 1806 + 50 * 1866 + 100 * 2167 + (tieuthu - 200) * 2729;
             }
             else
             {
@@ -68,7 +68,7 @@ namespace FirstCode.ss3
             Console.WriteLine($"Tổng thanh toán: {total_tax} VND");
 
         }
-     static void Main2(string[] args) //Bai 2: Hệ thống theo dõi chỉ số BMI & Đánh giá Tình trạng Sức khỏe
+        static void Main2(string[] args) //Bai 2: Hệ thống theo dõi chỉ số BMI & Đánh giá Tình trạng Sức khỏe
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("---INPUT---");
@@ -76,7 +76,7 @@ namespace FirstCode.ss3
             double cc = double.Parse(Console.ReadLine());
             Console.Write("Cân nặng (kg): ");
             double cn = double.Parse(Console.ReadLine());
-            double bmi = Math.Round( (cn / (cc * cc)), 2);
+            double bmi = Math.Round((cn / (cc * cc)), 2);
             string tt = "-";
             if (bmi < 18.5)
             {
@@ -86,7 +86,7 @@ namespace FirstCode.ss3
             {
                 tt = "Bình thường (Lý tưởng)";
             }
-            else if (23.0<= bmi && bmi < 25.0)
+            else if (23.0 <= bmi && bmi < 25.0)
             {
                 tt = "Thừa cân (Tiền béo phì)";
             }
@@ -94,15 +94,15 @@ namespace FirstCode.ss3
             {
                 tt = "Béo phì";
             }
-            double min_weight = Math.Round(( 18.5 * cc * cc),2);
-            double max_weight = Math.Round((22.9 * cc * cc),2);
+            double min_weight = Math.Round((18.5 * cc * cc), 2);
+            double max_weight = Math.Round((22.9 * cc * cc), 2);
             Console.WriteLine("---OUTPUT---");
             Console.WriteLine($"Chỉ số BMI của bạn: {bmi}");
             Console.WriteLine($"Phân loại sức khỏe: {tt}");
             Console.WriteLine($"Cân nặng lý tưởng của bạn nên từ {min_weight} kg đến {max_weight} kg.");
             Console.ReadKey();
         }
-     static void Main3(string[] args) //Bai 3: Ứng dụng Quy đổi tiền tệ đa tỷ giá ngân hàng
+        static void Main3(string[] args) //Bai 3: Ứng dụng Quy đổi tiền tệ đa tỷ giá ngân hàng
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("---INPUT---");
@@ -116,7 +116,7 @@ namespace FirstCode.ss3
                 Console.Write("Chọn ngoại tệ: ");
                 pick = byte.Parse(Console.ReadLine());
             }
-            decimal ser =(1m/200m) * vnd;
+            decimal ser = (1m / 200m) * vnd;
             decimal vnd_doi = vnd - ser;
             string dvi = "-";
             decimal total = 0;
@@ -145,7 +145,7 @@ namespace FirstCode.ss3
             Console.WriteLine($"Số tiền VND tính đổi: {vnd_doi:#,##0} VND");
             Console.WriteLine($"Số tiền {dvi} nhận được: {Math.Round(total, 2):#,##0} {dvi}");
         }
-     static void Main4(string[] args) //Bai 4: Tính tuổi chính xác & Đếm ngược ngày sinh nhật
+        static void Main4(string[] args) //Bai 4: Tính tuổi chính xác & Đếm ngược ngày sinh nhật
 
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -168,7 +168,7 @@ namespace FirstCode.ss3
             }
             DateTime now = DateTime.Now.Date;
             int tuoi = now.Year - bday.Year;
-            
+
             DateTime nextbday = new DateTime(now.Year, bday.Month, bday.Day);
             if (nextbday < now)
             {
@@ -176,15 +176,15 @@ namespace FirstCode.ss3
             }
             TimeSpan so_ngay_da_song = (now - bday);
             TimeSpan sinh_nhat_tiep_theo = nextbday - now;
-            
+
             Console.WriteLine("\n---OUTPUT---");
             Console.WriteLine($"Tuổi hiện tại: {tuoi} tuổi");
             Console.WriteLine($"Bạn đã sống tổng cộng: {so_ngay_da_song.Days} ngày");
             Console.WriteLine($"Sinh nhật tiếp theo: {sinh_nhat_tiep_theo.Days} ngày nữa");
             Console.ReadLine();
-            
+
         }
-     static void Main5(string[] args) //Bai 5: Quản lý điểm học phần & Quy Đổi thang điểm GPA (4.0)
+        static void Main5(string[] args) //Bai 5: Quản lý điểm học phần & Quy Đổi thang điểm GPA (4.0)
         {
             Console.OutputEncoding = (Encoding.UTF8);
             Console.Write("C# (4 TC): ");
@@ -197,7 +197,7 @@ namespace FirstCode.ss3
             string gpa = "-";
             string diem = "-";
             string xep_loai = "-";
-            if (tbts >=8.5 && tbts<=10)
+            if (tbts >= 8.5 && tbts <= 10)
             {
                 gpa = "4.0";
                 diem = "A";
@@ -209,13 +209,13 @@ namespace FirstCode.ss3
                 diem = "B";
                 xep_loai = "Khá";
             }
-            else if (tbts >=5.5)
+            else if (tbts >= 5.5)
             {
                 gpa = "2.0";
                 diem = "C";
                 xep_loai = "Trung bình";
             }
-            else if (tbts >=4.0)
+            else if (tbts >= 4.0)
             {
                 gpa = "1.0";
                 diem = "D";
@@ -228,14 +228,14 @@ namespace FirstCode.ss3
                 xep_loai = " Kém (Trượt) ";
             }
             Console.WriteLine("\n---OUTPUT---");
-            Console.WriteLine($"Điểm TB Thang 10: {Math.Round(tbts,2)}");
+            Console.WriteLine($"Điểm TB Thang 10: {Math.Round(tbts, 2)}");
             Console.WriteLine($"Điểm Chữ quy đổi: {diem}");
             Console.WriteLine($"Điểm GPA thang 4: {gpa}");
             Console.WriteLine($"Xếp loại học lực: {xep_loai}");
             Console.ReadKey();
 
         }
-     static void Main(string[] args) //Bai 6: Chuẩn hóa họ tên người dùng & tự động tạo email/ username
+        static void Main6(string[] args) //Bai 6: Chuẩn hóa họ tên người dùng & tự động tạo email/ username
         {
             Console.OutputEncoding = (Encoding.UTF8);
             Console.InputEncoding = System.Text.Encoding.UTF8;
@@ -264,17 +264,44 @@ namespace FirstCode.ss3
             Console.WriteLine($"Họ tên chuẩn hóa: {tencuoi}");
             parts = tencuoi.Split(' ');
             List<string> ten_dem = new List<string>();
-            for (int i =1; i < parts.Length-1; i++)
+            for (int i = 1; i < parts.Length - 1; i++)
             {
-                ten_dem.Add(parts[i]) ;
+                ten_dem.Add(parts[i]);
             }
             string name = parts[parts.Length - 1];
             string[] ten_dem_str = ten_dem.ToArray();
 
-            Console.WriteLine($"Họ: {parts[0]} \\ Tên đệm: {string.Join(" ",ten_dem_str)} \\ Tên: {name}");
-            string username = name.ToLower() +"."+ parts[0].ToLower() + string.Join("",ten_dem_str).ToLower();
+            Console.WriteLine($"Họ: {parts[0]} \\ Tên đệm: {string.Join(" ", ten_dem_str)} \\ Tên: {name}");
+            string username = name.ToLower() + "." + parts[0].ToLower() + string.Join("", ten_dem_str).ToLower();
             Console.WriteLine($"Username tạo tự động: {username}");
             Console.WriteLine($"Email cấp phát: {username}@company.edu.vn");
+
+        }
+        static void Main7(string[] args) //Bai 7: Lập kế hoạch chi phí nhiên liệu & chia sẻ chuyến đi (car-pooling)
+        {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine("---INPUT---");
+            Console.Write("Quãng đường (km): ");
+            double kcach = double.Parse(Console.ReadLine());
+            Console.Write("Mức tiêu hao (L/100km): ");
+            double tieuthu = double.Parse(Console.ReadLine());
+            Console.Write("Giá xăng (VND/Lít): ");
+            decimal gia = decimal.Parse(Console.ReadLine());
+            Console.Write("Số người đi: ");
+            int num = int.Parse(Console.ReadLine());
+            double tong_xang = (kcach / 100) * tieuthu;
+            decimal totalcost = (decimal)tong_xang * gia;
+            decimal per = Math.Ceiling((totalcost / (decimal)num) / 1000) * 1000;
+            Console.WriteLine("\n---OUTPUT---");
+            Console.WriteLine($"Tổng nhiên liệu tiêu thụ: {tong_xang:F2} Lít");
+            Console.WriteLine($"Tổng chi phí xăng dầu: {totalcost:#,##0} VND");
+            Console.WriteLine($"Chi phí mỗi người: {per:#,##0} VND");
+            Console.ReadKey();
+        }
+        static void Main8(string[] args) //Bai 8: Kiểm tra mã xác thực OTP & quản lý thời gian hiệu lực
+        {
+            Console.InputEncoding = System.Text.Encoding.UTF8;
 
         }
     }
