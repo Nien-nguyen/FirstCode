@@ -302,7 +302,64 @@ namespace FirstCode.ss3
         static void Main8(string[] args) //Bai 8: Kiểm tra mã xác thực OTP & quản lý thời gian hiệu lực
         {
             Console.InputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("---INPUT---");
+            int otpdung = 839201;
+            int otpnhap;
+            while (true)
+            {
+                Console.Write("Mã OTP nhận được: ");
+                if (int.TryParse(Console.ReadLine(),out otpnhap))
+                {
+                    break;
+                }
+                Console.WriteLine("Mã OTP chỉ bao gồm số");
+            }
+            string tgian;
+            Console.Write("Thời gian trôi qua (-phut-giay): ");
+            tgian = Console.ReadLine();
+            string[] time = tgian.Split(" ");
+            TimeSpan timenhap = new TimeSpan(0,int.Parse(time[0]), int.Parse(time[4]));
+            DateTime creationtime = DateTime.Now;
+            TimeSpan timelimit = new TimeSpan(0, 5, 0);
+            bool timeresult;
+            bool otpresult;
+            string final;
+            if (timenhap > timelimit)
+            {
+                timeresult = false;
+            }
+            else
+            {
+                timeresult = true;
+            }
+            if (otpnhap == otpdung)
+            {
+                otpresult = true;
+            }
+            else
+            {
+                otpresult = false;
+            }
+
+            if (timeresult==true && otpresult==true)
+            {
+                final = $"THÀNH CÔNG - Giao dịch đã được phê duyệt.";
+                if (timeresult == true && otpresult == false)
+                {
+                    final = "LỖI - Mã OTP không hợp lệ";
+                    if (timeresult == false && otpresult == true)
+                    {
+                        final = "LỖI - Hết hạn OTP";
+                    }
+                    else
+                    {
+                        final = "LỖI - Hết hạn OTP và Mã OTP không hợp lệ";
+                    }
+                }
+            }
 
         }
+        
     }
 }

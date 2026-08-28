@@ -121,7 +121,7 @@ namespace FirstCode.ss4
             }
 
         }
-        static void Main(string[] args)
+        static void Main8(string[] args)
         {
             Bai_5();
         }
