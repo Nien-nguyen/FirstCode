@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace FirstCode.ss5
@@ -113,12 +114,86 @@ namespace FirstCode.ss5
             }
         }
 
+        //Write a program to display the n terms of harmonic series and their sum. The harmonic series is 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
+        static void bai3()
+        {
+            Console.Write("Nhap vao so n: ");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            float sum = 0;
+            for (int i = 1; i <=n; i++)
+            {
+                if (i == n)
+                {
+                    Console.Write($"1/{i}");
+                    break;
+                }
+
+                Console.Write($"1/{i} + ");
+                sum = sum + (float)1 / i;
+            }
+            Console.WriteLine($"= {sum}");
+        }
+
+        //Write a program to find the perfect numbers within a given number range
+        static void bai4()
+        {
+            Console.Write("Nhap vao so n: ");
+            int n = int.Parse(Console.ReadLine());
+            int sum_uoc = 0;
+            int sohoanhao = 0;
+            for (int i=1; i<=n; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+
+                    if (j == i)
+                    {
+                        break;
+                    }
+                    else if (i % j == 0)
+                    {
+                        sum_uoc = sum_uoc + j;
+                    }
+                }
+                if (sum_uoc == i)
+                {
+                    Console.WriteLine($"{i} la so hoan hao");
+                }
+                sum_uoc = 0;
+            }
+            
+            
+        }
+
+        //Write a program to determine whether a given number is prime or not
+        static void bai5()
+        {
+            Console.Write("Nhap vao so n: ");
+            int n = int.Parse(Console.ReadLine());
+            int sum_uoc = 0;
+            for (int i =1; i<=n; i++)
+            {
+                if (n%i == 0)
+                {
+                    sum_uoc = sum_uoc + i;
+                }
+            }
+            if (sum_uoc == 1 + n)
+            {
+                Console.WriteLine($"{n} la so nguyen to");
+            }
+            else
+            {
+                Console.WriteLine($"{n} khong phai la so nguyen to");
+            }
+        }
         public static void Main(string[] args)
         {
             //bangcuuchuong();
             //kimtuthapvietnam();
             //gamedoanso();
-            bai2();
+            bai5();
         }
     }
 }
