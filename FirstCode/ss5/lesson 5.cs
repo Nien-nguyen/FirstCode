@@ -169,26 +169,27 @@ namespace FirstCode.ss5
         //Write a program to determine whether a given number is prime or not
         static void bai5()
         {
-            Console.Write("Nhap vao so n: ");
+            Console.Write("Ban muon kiem tra so nguyen to trong khoang n?: ");
             int n = int.Parse(Console.ReadLine());
             int sum_uoc = 0;
-            for (int i =1; i<=n; i++)
+            int songuyento = 0;
+            for (int k = 1; k <= n; k++)
             {
-                if (n%i == 0)
+                for (int i = 1; i <= k; i++)
                 {
-                    sum_uoc = sum_uoc + i;
+                    if (k % i == 0)
+                    {
+                        sum_uoc = sum_uoc + i;
+                    }
                 }
-            }
-            if (sum_uoc == 1 + n)
-            {
-                Console.WriteLine($"{n} la so nguyen to");
-            }
-            else
-            {
-                Console.WriteLine($"{n} khong phai la so nguyen to");
+                if (sum_uoc == 1 + k)
+                {
+                    Console.WriteLine($"{k} la so nguyen to");
+                }
+                sum_uoc = 0;
             }
         }
-        public static void Main(string[] args)
+        public static void Mainn(string[] args)
         {
             //bangcuuchuong();
             //kimtuthapvietnam();
