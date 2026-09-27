@@ -442,7 +442,7 @@ namespace FirstCode.ss6
         {
             Console.WriteLine(1 / 2);
         }
-        public static void Main(string[] args)
+        public static void Mainn(string[] args)
         {
             Bai20();
         }
