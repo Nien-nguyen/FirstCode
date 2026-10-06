@@ -514,7 +514,7 @@ namespace FirstCode.ss7
                 m--;
             }
         }
-        public static void Main(string[] args)
+        public static void Mainn(string[] args)
         {
             matran();
         }

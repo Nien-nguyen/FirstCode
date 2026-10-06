@@ -194,7 +194,7 @@ namespace FirstCode.ss5
             //bangcuuchuong();
             //kimtuthapvietnam();
             //gamedoanso();
-            bai5();
+            bai2();
         }
     }
 }
