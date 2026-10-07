@@ -133,7 +133,7 @@ namespace FirstCode.ss8
             string newstr = str1.Substring(0, str1.IndexOf(str2)) + sub + str1.Substring(str1.IndexOf(str2));
             return newstr;
         }
-        public static void Main(string[] args)
+        public static void MainN(string[] args)
         {
             string str = inputchuoi();
             Console.WriteLine($"Chuoi vua nhap: {str}");
